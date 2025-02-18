@@ -3,12 +3,14 @@
 import {AiOutlineMenu} from 'react-icons/ai';
 import Avatar from '../Avatar';
 import { useCallback, useState } from 'react';
+import { signOut } from 'next-auth/react';
 import MenuItem from './MenuItem';
 
 import useRegisterModal from '@/app/hooks/useRegisterModal';
 import useLoginModal from '@/app/hooks/useLoginModal';
-import { signOut } from 'next-auth/react';
+
 import { SafeUser } from '@/app/types';
+import useRentModal from '@/app/hooks/useRentModal';
 
 interface UserMenuProps{
   currentUser?: SafeUser | null
@@ -19,16 +21,26 @@ const UserMenu: React.FC<UserMenuProps> = ({
 }) => {
   const registerModal = useRegisterModal();
   const LoginModal = useLoginModal();
+  const rentModal = useRentModal();
   const [isOpen,setIsOpen] = useState(false);
 
   const toggleOpen = useCallback(() => {
     setIsOpen((value)=> !value);
   },[]);
+
+  const onRent = useCallback(()=>{
+    if(!currentUser) {
+      return LoginModal.onOpen();
+    }
+
+    //Open Rent Modal
+    rentModal.onClose();
+  }, [currentUser, LoginModal, rentModal]);
   
     return(
         <div className="relative" >
             <div className="flex flex-row items-center gap-3" >
-                <div onClick={() => {}}
+                <div onClick={onRent}
                 className="
                 hiddenn
                 md:block
@@ -92,29 +104,17 @@ const UserMenu: React.FC<UserMenuProps> = ({
                      <>
                      <MenuItem
                        onClick={() => {}}
-                       label="My trips"
-                     />
-                     <MenuItem
-                       onClick={() => {}}
                        label="My favorites"
                      />
                      <MenuItem
-                       onClick={() => {}}
-                       label="My reservations"
-                     />
-                     <MenuItem
-                       onClick={() => {}}
-                       label="My Properties"
-                     />
-                     <MenuItem
-                       onClick={() => {}}
+                       onClick={rentModal.onOpen}
                        label="PG-Locator my home"
                      />
                      <hr />
                      <MenuItem
                        onClick={() => signOut()}
                        label="Logout"
-                     />
+                      />
                      </>
                   ) : (
                   <>

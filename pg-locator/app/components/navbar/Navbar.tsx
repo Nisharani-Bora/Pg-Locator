@@ -2,7 +2,6 @@
 
 
 import Container from "../Container";
-import Categories from "./Categories";
 import Logo from "./Logo";
 import Search from "./Search";
 import UserMenu  from "./UserMenu";
@@ -22,7 +21,7 @@ const Navbar: React.FC<NavbarPeops> = ({
             <div 
             className="
             py-4
-            border-b-[1px]
+            border-b-[2px]
             "
             >
            <Container>
@@ -42,7 +41,7 @@ const Navbar: React.FC<NavbarPeops> = ({
             </div>
            </Container>
         </div>
-        <Categories />
+        
         </div>
     );
 }

@@ -1,6 +1,6 @@
 'use client';
 
-import { BiSearch } from "react-icons/bi";
+import { BiSearch } from  'react-icons/bi';
 
 const Search = () => {
     return(
@@ -18,29 +18,19 @@ const Search = () => {
 
         "
         >
-            <div
-            className="
-                flex
-                flex-row
-                items-between
-            "
-            >
-
-               
-
-                <div
-                className="
+     <div
+      className="
                 text-sm
                 pl-6
                 pr-2
-                text-grey-600
+                text-black-600
                 flex
                 flex-row
                 items-center
-                gap-3
+                gap-4
                 "
                 >
-                    <div className="hidden sm:block">Search Location</div>
+                    <div className="hidden sm:block">Search PG</div>
                     <div
                     className="
                       p-2
@@ -54,7 +44,7 @@ const Search = () => {
             </div>
 
         </div>
-        </div>
+        
     );
 }
 

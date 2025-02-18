@@ -1,6 +1,13 @@
+import getListings from "./actions/getListings";
 import ClientOnly from "./components/ClientOnly";
 import Container from "./components/Container";
-export default function Home() {
+
+
+export default  function Home() {
+  const isEmpty = true;
+
+ 
+
   return (
    <ClientOnly>
     <Container>

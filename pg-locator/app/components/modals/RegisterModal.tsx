@@ -25,7 +25,7 @@ const RegisterModal = () => {
     const RegisterModal = useRegisterModal();
     const LoginModal = useLoginModal();
 
-    const [isLoading,setIsLoading] = useState(false);
+    const [isLoading , setIsLoading] = useState(false);
 
     const{
         register,
@@ -43,7 +43,7 @@ const RegisterModal = () => {
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
         setIsLoading(true);
 
-        axios.post('/api/register',data)
+        axios.post('/api/register' , data)
         .then(()=> {
             RegisterModal.onClose();
         })
